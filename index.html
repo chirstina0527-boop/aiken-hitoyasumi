@@ -17,102 +17,72 @@
       --font-main:"Shippori Mincho",serif;
       --font-sub:"Kosugi Maru",sans-serif;
       --max:1100px;
+      --card:#fff;
+      --shadow:0 2px 10px rgba(0,0,0,0.08);
     }
     body{
-      margin:0;
-      color:var(--charcoal);
-      background:var(--beige);
-      font-family:var(--font-main);
-      line-height:1.8;
+      margin:0;color:var(--charcoal);background:var(--beige);
+      font-family:var(--font-main);line-height:1.8;
     }
 
     /* Header */
     header{
-      position:fixed;top:0;left:0;right:0;
-      display:flex;justify-content:center;z-index:100;
-      transition:background .3s ease;
-      background:rgba(255,255,255,0.3);
-      backdrop-filter:blur(6px);
+      position:fixed;top:0;left:0;right:0;display:flex;justify-content:center;z-index:100;
+      transition:background .3s ease;background:rgba(255,255,255,0.3);backdrop-filter:blur(6px);
     }
-    .navwrap{
-      width:var(--max);display:flex;justify-content:space-between;
-      align-items:center;padding:12px 20px;
-    }
-    .brand{
-      font-family:var(--font-main);
-      font-size:1.4rem;letter-spacing:.08em;
-      text-decoration:none;color:var(--charcoal);
-    }
-    nav a{
-      font-family:var(--font-sub);
-      text-decoration:none;color:var(--charcoal);
-      margin-left:18px;font-size:.95rem;
-    }
+    .navwrap{width:var(--max);display:flex;justify-content:space-between;align-items:center;padding:12px 20px;}
+    .brand{font-family:var(--font-main);font-size:1.4rem;letter-spacing:.08em;text-decoration:none;color:var(--charcoal);}
+    nav a{font-family:var(--font-sub);text-decoration:none;color:var(--charcoal);margin-left:18px;font-size:.95rem;}
     .spacer{height:60px;}
 
+    /* Sections */
+    section{max-width:var(--max);margin:120px auto;padding:0 20px;}
+    h2{font-size:1.5rem;margin-bottom:1em;letter-spacing:.02em;}
+    .muted{opacity:.8}
+
     /* Hero Ken Burns */
-    .hero{
-      position:relative;height:100vh;overflow:hidden;
-      background:var(--beige);
-    }
-    .hero img{
-      position:absolute;inset:0;width:100%;height:100%;
-      object-fit:cover;opacity:0;
-      animation:fade 24s infinite,zoom 24s infinite;
-      transform:scale(1.05);
-    }
+    .hero{position:relative;height:100vh;overflow:hidden;background:var(--beige);max-width:none;margin:0;}
+    .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:fade 24s infinite,zoom 24s infinite;transform:scale(1.05);}
     .hero img:nth-of-type(1){animation-delay:0s;}
     .hero img:nth-of-type(2){animation-delay:8s;}
     .hero img:nth-of-type(3){animation-delay:16s;}
-    @keyframes fade{
-      0%,33%{opacity:1;}
-      34%,100%{opacity:0;}
-    }
-    @keyframes zoom{
-      0%{transform:scale(1.05);}
-      33%,100%{transform:scale(1.12);}
-    }
+    @keyframes fade{0%,33%{opacity:1;}34%,100%{opacity:0;}}
+    @keyframes zoom{0%{transform:scale(1.05);}33%,100%{transform:scale(1.12);}}
 
     /* Intro */
-    section.intro{
-      max-width:var(--max);margin:100px auto;padding:0 20px;
-    }
-    .intro h1{
-      font-size:1.8rem;margin-bottom:1.2em;letter-spacing:.04em;
-    }
-    .intro p{
-      font-size:1rem;margin:0 0 .6em;
-    }
+    .intro{margin:100px auto;}
+    .intro h1{font-size:1.8rem;margin-bottom:1.2em;letter-spacing:.04em;}
+    .intro p{font-size:1rem;margin:0 0 .6em;}
 
-    /* Services */
-    section#services{
-      max-width:var(--max);margin:120px auto;padding:0 20px;
-    }
-    h2{font-size:1.5rem;margin-bottom:1em;}
-    .cards{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
-    }
-    .card{
-      background:#fff;border-radius:14px;padding:24px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.08);
-    }
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+    .card{background:var(--card);border-radius:14px;padding:24px;box-shadow:var(--shadow);}
     .card h3{margin-top:0;font-size:1.2rem;}
     .card p{margin:.6em 0 1em;}
-    .cta{
-      display:inline-block;font-family:var(--font-sub);
-      text-decoration:none;color:var(--charcoal);
-      border:1px solid rgba(0,0,0,0.1);
-      padding:8px 14px;border-radius:10px;
-    }
+
+    /* CTA */
+    .cta{display:inline-block;font-family:var(--font-sub);text-decoration:none;color:var(--charcoal);
+      border:1px solid rgba(0,0,0,0.1);padding:8px 14px;border-radius:10px;}
+    .cta.primary{border-width:0;background:#f5f5f5;box-shadow:var(--shadow);}
+
+    /* Two-column helper */
+    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start;}
+    .cols.reverse{grid-template-columns:.9fr 1.1fr;}
+    .imgbox{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#fff;}
+    .imgbox img{width:100%;display:block;}
+
+    /* FAQ */
+    details{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:14px 18px;}
+    details+details{margin-top:12px;}
+    summary{cursor:pointer;font-family:var(--font-sub);}
 
     /* Footer */
     footer{
-      background:rgba(40,40,40,0.7);
-      color:#f2f2f2;text-align:center;padding:40px 10px;margin-top:120px;
+      background:rgba(40,40,40,0.7);color:#f2f2f2;text-align:center;padding:40px 10px;margin-top:120px;
       font-family:var(--font-sub);font-size:.9rem;
     }
 
+    @media(max-width:900px){.cols,.cols.reverse{grid-template-columns:1fr;}}
     @media(max-width:768px){
       .intro h1{font-size:1.4rem;}
       nav a{margin-left:10px;font-size:.85rem;}
@@ -126,6 +96,10 @@
       <a href="#" class="brand">Aiken Hitoyasumi</a>
       <nav>
         <a href="#services">Service</a>
+        <a href="#price">Price</a>
+        <a href="#flow">Flow</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">Reserve</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -133,15 +107,15 @@
   <div class="spacer"></div>
 
   <!-- Hero Section -->
-  <section class="hero" aria-label="トップビジュアル">
+  <section id="hero" class="hero" aria-label="トップビジュアル">
     <!-- ↓ GitHub Pagesの画像URLに差し替え -->
-    <img src="https://USERNAME.github.io/REPO/hero1.jpg" alt="">
-    <img src="https://USERNAME.github.io/REPO/hero2.jpg" alt="">
-    <img src="https://USERNAME.github.io/REPO/hero3.jpg" alt="">
+    <img src="https://USERNAME.github.io/REPO/assets/img/hero1.jpg" alt="">
+    <img src="https://USERNAME.github.io/REPO/assets/img/hero2.jpg" alt="">
+    <img src="https://USERNAME.github.io/REPO/assets/img/hero3.jpg" alt="">
   </section>
 
-  <!-- Intro Poem -->
-  <section class="intro">
+  <!-- Intro -->
+  <section id="intro" class="intro">
     <h1>犬と、やすらぎを分けあう時間。</h1>
     <p>朝の空気を吸い込み、いつもの道を歩く。</p>
     <p>足取りが揃えば、心もほどけていく。</p>
@@ -155,22 +129,188 @@
       <div class="card">
         <h3>お散歩代行</h3>
         <p>近所の公園や河川敷で、いつものリズムを大切に。歩幅や好みをヒアリングして、安心のルーティン散歩を。</p>
-        <a class="cta" href="#contact">問い合わせる</a>
+        <a class="cta" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーを開く</a>
       </div>
       <div class="card">
         <h3>シッター（ご自宅）</h3>
         <p>普段の環境でストレスを最小化。ごはん・お水・トイレ・ケアを丁寧に。旅行・出張時も安心のレポート付き。</p>
-        <a class="cta" href="#contact">問い合わせる</a>
+        <a class="cta" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーを開く</a>
       </div>
       <div class="card">
         <h3>アドベンチャー散歩</h3>
         <p>ただ歩くだけじゃない、リフレッシュの時間。ドッグランや自然の中で、ボール遊びや探索をたっぷりと。</p>
-        <a class="cta" href="#contact">問い合わせる</a>
+        <a class="cta" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーを開く</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Adventure special -->
+  <section id="adventure">
+    <div class="cols">
+      <div>
+        <h2>アドベンチャー散歩</h2>
+        <p class="muted">一緒にリフレッシュ。遊びながら、心もほどける。</p>
+        <p>ドッグラン同行／河川敷ボール遊び／自然散策。エネルギー発散と好奇心を満たす、特別なお出かけプランです。入場料や移動費は実費、天候・気温により内容調整します。</p>
+        <p><a class="cta primary" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">空き状況と予約へ</a></p>
+      </div>
+      <div class="imgbox">
+        <!-- 差し替え -->
+        <img src="https://USERNAME.github.io/REPO/assets/img/adventure_01.jpg" alt="アドベンチャー散歩のイメージ">
+      </div>
+    </div>
+  </section>
+
+  <!-- Price -->
+  <section id="price">
+    <h2>料金・プラン</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>お散歩代行</h3>
+        <p>30 / 45 / 60分（延長10分単位）。歩幅・コースは事前ヒアリングのうえ調整。</p>
+        <p class="muted">※税込・交通費別／詳細はDogHuggy規約準拠</p>
+      </div>
+      <div class="card">
+        <h3>ご自宅シッター</h3>
+        <p>1回/2回訪問。ごはん・飲水・トイレ・ケア・お遊び。旅行・出張時にレポート付き。</p>
+        <p class="muted">※鍵の受け渡し、時間外料金の有無は事前にご相談</p>
+      </div>
+      <div class="card">
+        <h3>アドベンチャー散歩</h3>
+        <p>ベース料金＋（ドッグラン入場料/移動費）。雨天・猛暑時は安全優先で代替プランに変更。</p>
+        <p class="muted">※詳細はお問い合わせください</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;"><a class="cta" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">最新の料金と空き状況を見る</a></p>
+  </section>
+
+  <!-- Flow -->
+  <section id="flow">
+    <h2>依頼フロー</h2>
+    <div class="cards">
+      <div class="card"><h3>① 相談</h3><p>LINE/DMまたはフォームで、犬種・エリア・ご希望日時を送信。</p></div>
+      <div class="card"><h3>② ヒアリング</h3><p>性格や生活リズム、注意点を伺い、最適なプランを提案。</p></div>
+      <div class="card"><h3>③ 予約</h3><p>DogHuggyのカレンダーから日程を確定（保険・規約も適用）。</p></div>
+      <div class="card"><h3>④ 当日 & レポート</h3><p>散歩/シッター実施。写真とログでご報告します。</p></div>
+    </div>
+    <p style="margin-top:18px;"><a class="cta primary" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーで予約する</a></p>
+  </section>
+
+  <!-- Safety -->
+  <section id="safety">
+    <div class="cols reverse">
+      <div>
+        <h2>安心・安全への取り組み</h2>
+        <p>DogHuggy認定シッター。損害保険加入、Wリード対応、気温配慮の時間帯運用、体調変化時の連絡体制など、基本を丁寧に徹底します。</p>
+        <ul>
+          <li>天候・気温に応じたコース/時間の調整</li>
+          <li>持病・投薬・シニア配慮の個別対応</li>
+          <li>撮影・SNS掲載はご許可の範囲のみ</li>
+        </ul>
+      </div>
+      <div class="imgbox">
+        <!-- 差し替え -->
+        <img src="https://USERNAME.github.io/REPO/assets/img/safety.jpg" alt="安心・安全の取り組み">
+      </div>
+    </div>
+  </section>
+
+  <!-- Report -->
+  <section id="report">
+    <h2>レポート例</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>お散歩レポート</h3>
+        <p>歩行時間・距離・水分・排泄・遊び内容を簡潔に。写真3点で様子も共有。</p>
+        <img src="https://USERNAME.github.io/REPO/assets/img/report_mock.png" alt="レポートモック" style="width:100%;border-radius:10px;margin-top:8px;">
+      </div>
+      <div class="card">
+        <h3>シッターレポート</h3>
+        <p>ごはん量・飲水・トイレ・ケア・体調メモ。次回に向けた小さな学びも記録。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice -->
+  <section id="voice">
+    <h2>お客様の声</h2>
+    <div class="cards">
+      <div class="card"><p>旅行中も写真付きで安心でした。臆病な子がすこしずつ慣れていく様子が見られて嬉しい。（柴犬 2歳）</p></div>
+      <div class="card"><p>残業の日の夕方散歩をお願い。帰宅後の落ち着きが違う…！本当に助かります。（トイプー 4歳）</p></div>
+      <div class="card"><p>シニア犬のペースに合わせてくれて感謝。暑い日は涼しい時間に調整してくれました。（Mダックス 12歳）</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>よくある質問</h2>
+    <details>
+      <summary>初回に準備するものは？</summary>
+      <p>首輪/胴輪・リード・うんち袋・飲水・合鍵（必要時）・普段のルーティンが分かるメモをご用意ください。</p>
+    </details>
+    <details>
+      <summary>雨天や猛暑のときは？</summary>
+      <p>安全最優先で短縮・時間帯変更・室内遊び等に切り替えます。事前に方針を共有します。</p>
+    </details>
+    <details>
+      <summary>キャンセルや延長は可能？</summary>
+      <p>DogHuggyの規約に準拠します。詳細は予約ページをご確認ください。</p>
+    </details>
+    <details>
+      <summary>多頭・子犬・シニアもOK？</summary>
+      <p>状況に応じて対応します。まずはヒアリングで最適な形をご提案します。</p>
+    </details>
+  </section>
+
+  <!-- Season -->
+  <section id="season">
+    <h2>予約状況 / 季節のご案内</h2>
+    <p class="muted">GW・夏休み・年末年始は混雑します。お早めのご相談がおすすめです。</p>
+    <p><a class="cta" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーで空き枠を見る</a></p>
+  </section>
+
+  <!-- Profile -->
+  <section id="profile">
+    <div class="cols">
+      <div class="imgbox">
+        <!-- 差し替え -->
+        <img src="https://USERNAME.github.io/REPO/assets/img/profile.jpg" alt="シッターのプロフィール">
+      </div>
+      <div>
+        <h2>プロフィール</h2>
+        <p>「犬と、やすらぎを分けあう時間。」を合言葉に、臆病さんの慣らし・シニア配慮・高エネルギー犬の発散を得意領域としています。対応時間やエリアは下記をご覧ください。</p>
+        <ul>
+          <li>稼働：平日・土日とも応相談</li>
+          <li>DogHuggy認定 / 保険加入</li>
+          <li>活動拠点：二子玉川〜高津周辺</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Area -->
+  <section id="area">
+    <h2>対応エリア</h2>
+    <p>二子玉川 / 高津 / 溝の口 など（自転車移動・一部エリアは実費交通費）。エリア外は応相談。</p>
+    <img src="https://USERNAME.github.io/REPO/assets/img/map_area.png" alt="対応エリアの簡易地図" style="width:100%;max-width:760px;border-radius:14px;box-shadow:var(--shadow);">
+  </section>
+
+  <!-- Contact / Reserve -->
+  <section id="contact" style="text-align:center;">
+    <h2>ご予約・空き状況</h2>
+    <p>DogHuggyの専用カレンダーから空き状況の確認とご予約ができます。</p>
+    <p><a class="cta primary" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener" style="font-size:1.05rem;">カレンダーを開く</a></p>
+    <!-- 必要ならLINEも併設OK
+    <p style="margin-top:10px;"><a class="cta" href="https://lin.ee/xxxxx" target="_blank" rel="noopener">LINEで質問する</a></p>
+    -->
+  </section>
+
+  <!-- Footer & Policy -->
+  <section id="policy" style="max-width:var(--max);margin:40px auto 0;padding:0 20px;">
+    <p class="muted" style="font-size:.92rem;">
+      ※本サイトは予約・決済をDogHuggyのガイドラインに準拠して運用しています。特定商取引法に基づく表記・プライバシーポリシーはお問い合わせ時にご案内します。
+    </p>
+  </section>
+
   <footer>
     © 2025 Aiken Hitoyasumi ｜ DogHuggy認定シッター
   </footer>
