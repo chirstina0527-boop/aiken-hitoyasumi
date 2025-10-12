@@ -20,10 +20,8 @@
       --card:#fff;
       --shadow:0 2px 10px rgba(0,0,0,0.08);
     }
-    body{
-      margin:0;color:var(--charcoal);background:var(--beige);
-      font-family:var(--font-main);line-height:1.8;
-    }
+    body{margin:0;color:var(--charcoal);background:var(--beige);
+      font-family:var(--font-main);line-height:1.8;}
 
     /* Header */
     header{
@@ -35,13 +33,13 @@
     nav a{font-family:var(--font-sub);text-decoration:none;color:var(--charcoal);margin-left:18px;font-size:.95rem;}
     .spacer{height:60px;}
 
-    /* Sections */
+    /* Common sections */
     section{max-width:var(--max);margin:120px auto;padding:0 20px;}
     h2{font-size:1.5rem;margin-bottom:1em;letter-spacing:.02em;}
     .muted{opacity:.8}
 
     /* Hero Ken Burns */
-    .hero{position:relative;height:100vh;overflow:hidden;background:var(--beige);max-width:none;margin:0;}
+    .hero{position:relative;height:90vh;overflow:hidden;background:var(--beige);max-width:none;margin:0;}
     .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:fade 24s infinite,zoom 24s infinite;transform:scale(1.05);}
     .hero img:nth-of-type(1){animation-delay:0s;}
     .hero img:nth-of-type(2){animation-delay:8s;}
@@ -54,7 +52,7 @@
     .intro h1{font-size:1.8rem;margin-bottom:1.2em;letter-spacing:.04em;}
     .intro p{font-size:1rem;margin:0 0 .6em;}
 
-    /* Cards */
+    /* Cards (Services / Price / Flow / Voice / FAQ etc.) */
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
     .card{background:var(--card);border-radius:14px;padding:24px;box-shadow:var(--shadow);}
     .card h3{margin-top:0;font-size:1.2rem;}
@@ -65,16 +63,18 @@
       border:1px solid rgba(0,0,0,0.1);padding:8px 14px;border-radius:10px;}
     .cta.primary{border-width:0;background:#f5f5f5;box-shadow:var(--shadow);}
 
-    /* Two-column helper */
-    .cols{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start;}
+    /* 2-column sections (hotel-like) */
+    .cols{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+      max-width:var(--max);margin:0 auto;padding:0 20px;
+    }
     .cols.reverse{grid-template-columns:.9fr 1.1fr;}
     .imgbox{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#fff;}
-    .imgbox img{width:100%;display:block;}
+    .imgbox img{width:100%;height:100%;object-fit:cover;display:block;}
 
-    /* FAQ */
-    details{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:14px 18px;}
-    details+details{margin-top:12px;}
-    summary{cursor:pointer;font-family:var(--font-sub);}
+    /* Spacing helpers for 2-col sections */
+    .twocol-section{max-width:none;margin:0;padding:100px 0;background:var(--beige);}
+    .twocol-section + .twocol-section{margin-top:0;}
 
     /* Footer */
     footer{
@@ -82,7 +82,10 @@
       font-family:var(--font-sub);font-size:.9rem;
     }
 
-    @media(max-width:900px){.cols,.cols.reverse{grid-template-columns:1fr;}}
+    @media(max-width:900px){
+      .cols,.cols.reverse{grid-template-columns:1fr;}
+      .twocol-section{padding:70px 0;}
+    }
     @media(max-width:768px){
       .intro h1{font-size:1.4rem;}
       nav a{margin-left:10px;font-size:.85rem;}
@@ -106,9 +109,8 @@
   </header>
   <div class="spacer"></div>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="hero" class="hero" aria-label="トップビジュアル">
-    <!-- ↓ GitHub Pagesの画像URLに差し替え -->
     <img src="https://USERNAME.github.io/REPO/assets/img/hero1.jpg" alt="">
     <img src="https://USERNAME.github.io/REPO/assets/img/hero2.jpg" alt="">
     <img src="https://USERNAME.github.io/REPO/assets/img/hero3.jpg" alt="">
@@ -144,17 +146,16 @@
     </div>
   </section>
 
-  <!-- Adventure special -->
-  <section id="adventure">
+  <!-- 2-col #1: Adventure (左テキスト / 右画像) -->
+  <section id="adventure" class="twocol-section">
     <div class="cols">
       <div>
         <h2>アドベンチャー散歩</h2>
         <p class="muted">一緒にリフレッシュ。遊びながら、心もほどける。</p>
-        <p>ドッグラン同行／河川敷ボール遊び／自然散策。エネルギー発散と好奇心を満たす、特別なお出かけプランです。入場料や移動費は実費、天候・気温により内容調整します。</p>
+        <p>ドッグラン同行／河川敷ボール遊び／自然散策。エネルギー発散と好奇心を満たす特別なお出かけプランです。入場料や移動費は実費、天候・気温により内容調整します。</p>
         <p><a class="cta primary" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">空き状況と予約へ</a></p>
       </div>
       <div class="imgbox">
-        <!-- 差し替え -->
         <img src="https://USERNAME.github.io/REPO/assets/img/adventure_01.jpg" alt="アドベンチャー散歩のイメージ">
       </div>
     </div>
@@ -195,9 +196,12 @@
     <p style="margin-top:18px;"><a class="cta primary" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーで予約する</a></p>
   </section>
 
-  <!-- Safety -->
-  <section id="safety">
+  <!-- 2-col #2: Safety (右テキスト / 左画像) -->
+  <section id="safety" class="twocol-section">
     <div class="cols reverse">
+      <div class="imgbox">
+        <img src="https://USERNAME.github.io/REPO/assets/img/safety.jpg" alt="安心・安全の取り組み">
+      </div>
       <div>
         <h2>安心・安全への取り組み</h2>
         <p>DogHuggy認定シッター。損害保険加入、Wリード対応、気温配慮の時間帯運用、体調変化時の連絡体制など、基本を丁寧に徹底します。</p>
@@ -207,25 +211,19 @@
           <li>撮影・SNS掲載はご許可の範囲のみ</li>
         </ul>
       </div>
-      <div class="imgbox">
-        <!-- 差し替え -->
-        <img src="https://USERNAME.github.io/REPO/assets/img/safety.jpg" alt="安心・安全の取り組み">
-      </div>
     </div>
   </section>
 
-  <!-- Report -->
-  <section id="report">
-    <h2>レポート例</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>お散歩レポート</h3>
-        <p>歩行時間・距離・水分・排泄・遊び内容を簡潔に。写真3点で様子も共有。</p>
-        <img src="https://USERNAME.github.io/REPO/assets/img/report_mock.png" alt="レポートモック" style="width:100%;border-radius:10px;margin-top:8px;">
+  <!-- 2-col #3: Report (左テキスト / 右画像) -->
+  <section id="report" class="twocol-section">
+    <div class="cols">
+      <div>
+        <h2>レポート例</h2>
+        <p>歩行時間・距離・水分・排泄・遊び内容を簡潔に。写真と一緒に“その日の気づき”も共有します。</p>
+        <p class="muted">※画像はモックです。実際は個人情報を配慮して送付します。</p>
       </div>
-      <div class="card">
-        <h3>シッターレポート</h3>
-        <p>ごはん量・飲水・トイレ・ケア・体調メモ。次回に向けた小さな学びも記録。</p>
+      <div class="imgbox">
+        <img src="https://USERNAME.github.io/REPO/assets/img/report_mock.png" alt="レポートモック">
       </div>
     </div>
   </section>
@@ -261,18 +259,10 @@
     </details>
   </section>
 
-  <!-- Season -->
-  <section id="season">
-    <h2>予約状況 / 季節のご案内</h2>
-    <p class="muted">GW・夏休み・年末年始は混雑します。お早めのご相談がおすすめです。</p>
-    <p><a class="cta" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーで空き枠を見る</a></p>
-  </section>
-
-  <!-- Profile -->
-  <section id="profile">
-    <div class="cols">
+  <!-- 2-col #4: Profile (右テキスト / 左画像) -->
+  <section id="profile" class="twocol-section">
+    <div class="cols reverse">
       <div class="imgbox">
-        <!-- 差し替え -->
         <img src="https://USERNAME.github.io/REPO/assets/img/profile.jpg" alt="シッターのプロフィール">
       </div>
       <div>
@@ -287,11 +277,25 @@
     </div>
   </section>
 
-  <!-- Area -->
-  <section id="area">
-    <h2>対応エリア</h2>
-    <p>二子玉川 / 高津 / 溝の口 など（自転車移動・一部エリアは実費交通費）。エリア外は応相談。</p>
-    <img src="https://USERNAME.github.io/REPO/assets/img/map_area.png" alt="対応エリアの簡易地図" style="width:100%;max-width:760px;border-radius:14px;box-shadow:var(--shadow);">
+  <!-- 2-col #5: Area (左テキスト / 右画像) -->
+  <section id="area" class="twocol-section">
+    <div class="cols">
+      <div>
+        <h2>対応エリア</h2>
+        <p>二子玉川 / 高津 / 溝の口 など（自転車移動・一部エリアは実費交通費）。エリア外は応相談。</p>
+        <p class="muted">※詳細はお問い合わせ、またはDogHuggyページをご確認ください。</p>
+      </div>
+      <div class="imgbox">
+        <img src="https://USERNAME.github.io/REPO/assets/img/map_area.png" alt="対応エリアの簡易地図">
+      </div>
+    </div>
+  </section>
+
+  <!-- Season (テキストのみでOK) -->
+  <section id="season">
+    <h2>予約状況 / 季節のご案内</h2>
+    <p class="muted">GW・夏休み・年末年始は混雑します。お早めのご相談がおすすめです。</p>
+    <p><a class="cta" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener">カレンダーで空き枠を見る</a></p>
   </section>
 
   <!-- Contact / Reserve -->
@@ -299,12 +303,12 @@
     <h2>ご予約・空き状況</h2>
     <p>DogHuggyの専用カレンダーから空き状況の確認とご予約ができます。</p>
     <p><a class="cta primary" href="https://doghuggy.com/host_users/37121" target="_blank" rel="noopener" style="font-size:1.05rem;">カレンダーを開く</a></p>
-    <!-- 必要ならLINEも併設OK
+    <!-- LINEも併設する場合は下を解放
     <p style="margin-top:10px;"><a class="cta" href="https://lin.ee/xxxxx" target="_blank" rel="noopener">LINEで質問する</a></p>
     -->
   </section>
 
-  <!-- Footer & Policy -->
+  <!-- Policy note -->
   <section id="policy" style="max-width:var(--max);margin:40px auto 0;padding:0 20px;">
     <p class="muted" style="font-size:.92rem;">
       ※本サイトは予約・決済をDogHuggyのガイドラインに準拠して運用しています。特定商取引法に基づく表記・プライバシーポリシーはお問い合わせ時にご案内します。
