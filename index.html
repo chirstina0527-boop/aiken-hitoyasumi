@@ -108,6 +108,44 @@
   object-fit:cover;
   display:block;
 }
+      /* ヒーロー画像（3枚スライド） */
+  .hero{
+    position:relative;
+    height:90vh;
+    overflow:hidden;
+    margin:0;
+    max-width:none;
+    background:var(--beige);
+  }
+
+  .hero img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transform:scale(1.05);
+    animation: fade 24s infinite, zoom 24s infinite;
+  }
+
+  .hero img:nth-of-type(1){animation-delay:0s;}
+  .hero img:nth-of-type(2){animation-delay:8s;}
+  .hero img:nth-of-type(3){animation-delay:16s;}
+
+  @keyframes fade{
+    0%,33%{opacity:1;}
+    34%,100%{opacity:0;}
+  }
+  @keyframes zoom{
+    0%{transform:scale(1.05);}
+    33%,100%{transform:scale(1.12);}
+  }
+
+  @media(max-width:768px){
+    .hero{height:70vh;}
+  }
+
 
   </style>
 </head>
@@ -130,10 +168,12 @@
 
   <!-- Hero -->
   <section id="hero" class="hero" aria-label="トップビジュアル">
-  <img src="hero_diddy02.JPG"
-       alt="愛犬ひとやすみ｜犬と、やすらぎを分けあう時間。"
-       loading="eager" decoding="async">
-  </section>
+  <!-- Hero：3枚スライド -->
+<section id="hero" class="hero" aria-label="トップビジュアル">
+  <img src="hero-diddy.jpg" alt="ヒーロー画像1">
+  <img src="hero_moa.jpg" alt="ヒーロー画像2">
+  <img src="hero_sky.jpg" alt="ヒーロー画像3">
+</section>
 
   <!-- Intro -->
   <section id="intro" class="intro">
